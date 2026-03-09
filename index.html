@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Natural Disaster Detection</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(120deg,#141e30,#243b55);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+.container{
+background:white;
+color:black;
+padding:40px;
+width:500px;
+border-radius:12px;
+box-shadow:0px 10px 30px rgba(0,0,0,0.3);
+text-align:center;
+animation:fadeIn 1s ease-in;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+textarea{
+width:100%;
+height:120px;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:8px;
+background:#ff4b2b;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff416c;
+transform:scale(1.05);
+}
+
+.progress{
+width:100%;
+background:#ddd;
+border-radius:10px;
+margin-top:20px;
+}
+
+.progress-bar{
+height:25px;
+background:#ff4b2b;
+border-radius:10px;
+text-align:center;
+color:white;
+font-weight:bold;
+animation:grow 1.5s ease-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes grow{
+from{width:0;}
+}
+
+.result{
+margin-top:15px;
+font-size:20px;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌍 Disaster Text Detection AI</h1>
+
+<form method="POST">
+
+<textarea name="text" placeholder="Enter message or news text..."></textarea>
+
+<br>
+
+<button type="submit">Analyze Text</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result">
+
+Prediction: {{ prediction }}
+
+</div>
+
+<div>
+
+📊 Confidence Score: {{ probability }}%
+
+</div>
+
+<div class="progress">
+
+<div class="progress-bar" style="width: {{ probability }}%">
+
+{{ probability }}%
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
